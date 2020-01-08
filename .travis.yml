@@ -35,7 +35,7 @@ jobs:
         - if [ "$TOX_ENV" == "with_pandas" ]; then
             sudo python -m pip install --upgrade Cython;
             python -m pip install --upgrade Cython;
-          elif  [ "$TOX_ENV" == "with_numpy" ]
+          elif [ "$TOX_ENV" == "with_numpy" ]; then
             python -m pip install NumPy;
           fi
         
