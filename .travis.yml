@@ -37,12 +37,14 @@ jobs:
             sudo apt-get update;
             sudo apt-get install python3.7-dev;
             python -m pip install cython;
+            python setup.py install;
           elif [ "$TOX_ENV" == "with_numpy" ]; then
             sudo add-apt-repository ppa:deadsnakes/ppa -y;
             sudo apt-get update;
             sudo apt-get install python3.7-dev;
             python -m pip install cython;
             python -m pip install NumPy;
+            python setup.py install;
           fi
         
       script:
