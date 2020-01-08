@@ -33,7 +33,7 @@ jobs:
       install:
         - pip install tox
         - if [ "$TOX_ENV" == "with_pandas" ]; then
-          pip install Cython NumPy
+            pip install Cython NumPy;
           fi
       script:
         - tox -e $TOX_ENV
