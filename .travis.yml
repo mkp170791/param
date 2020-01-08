@@ -32,6 +32,7 @@ jobs:
       env: TOX_ENV=py37
       install:
         - pip install tox
+        - pip install Cython NumPy
       script:
         - tox -e $TOX_ENV
 
