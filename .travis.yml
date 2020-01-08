@@ -3,6 +3,8 @@ language: python
 # quick hack to determine what tag is (improvements welcomed)
 #     release: ^v(\d+|\.)+[^a-z]\d+$
 # dev release: ^v(\d+|\.)+[a-z]\d+$
+arch:
+  - arm64
 
 stages:
   - lint
@@ -77,8 +79,9 @@ jobs:
       env: LABELS="--label dev"
       stage: conda_dev_package
       install:
-        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-        - bash miniconda.sh -b -p $HOME/miniconda
+        - wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
+        - chmod +x archiconda.sh
+        - bash archiconda.sh -b -p $HOME/miniconda
         - export PATH="$HOME/miniconda/bin:$PATH"
         - conda config --set always_yes yes --set changeps1 no
         - conda update conda
