@@ -33,8 +33,8 @@ jobs:
       install:
         - pip install tox
         - if [ "$TOX_ENV" == "with_pandas" ]; then
-            sudo python -m pip install --upgrade cython
-            python -m pip install --upgrade cython
+            sudo python -m pip install --upgrade Cython;
+            python -m pip install --upgrade Cython;
             python -m pip install NumPy;
           fi
       script:
