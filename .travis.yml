@@ -32,7 +32,7 @@ jobs:
       env: TOX_ENV=py37
       install:
         - pip install tox
-        - if [ "$TOX_ENV" == "with_pandas" ]; then
+        - if [ "$TOX_ENV" == "with_pandas" || "$TOX_ENV" == "with_numpy" ]; then
             sudo python -m pip install --upgrade Cython;
             python -m pip install --upgrade Cython;
             python -m pip install NumPy;
