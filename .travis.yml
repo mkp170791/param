@@ -123,6 +123,8 @@ jobs:
             python -m pip install cython;
             python setup.py install;
           fi
+      script:
+        - tox -e $TOX_ENV
 
     - <<: *default
       arch: amd64
