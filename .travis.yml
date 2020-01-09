@@ -26,6 +26,7 @@ jobs:
   fast_finish: true
   include:
     - &default
+      arch: amd64
       stage: test
       python: 3.7
       env: TOX_ENV=py37
@@ -45,6 +46,7 @@ jobs:
         - tox -e $TOX_ENV
 
     - <<: *default
+      arch: amd64
       python: 3.8
       env: TOX_ENV=py38
 
@@ -54,6 +56,7 @@ jobs:
       env: TOX_ENV=py38
 
     - <<: *default
+      arch: amd64
       python: 3.6
       env: TOX_ENV=py36
 
@@ -63,6 +66,7 @@ jobs:
       env: TOX_ENV=py36
 
     - <<: *default
+      arch: amd64
       python: 3.5
       env: TOX_ENV=py35
 
@@ -72,6 +76,7 @@ jobs:
       env: TOX_ENV=py35
 
     - <<: *default
+      arch: amd64
       python: 2.7
       env: TOX_ENV=py27
 
@@ -81,10 +86,12 @@ jobs:
       env: TOX_ENV=py27
 
     - <<: *default
+      arch: amd64
       python: pypy
       env: TOX_ENV=pypy
 
     - <<: *default
+      arch: amd64
       env: TOX_ENV=with_ipython
 
     - <<: *default
@@ -92,6 +99,7 @@ jobs:
       env: TOX_ENV=with_ipython
 
     - <<: *default
+      arch: amd64
       env: TOX_ENV=with_numpy
 
     - <<: *default
@@ -99,6 +107,7 @@ jobs:
       env: TOX_ENV=with_numpy
 
     - <<: *default
+      arch: amd64
       env: TOX_ENV=with_pandas
 
     - <<: *default
@@ -106,6 +115,7 @@ jobs:
       env: TOX_ENV=with_pandas
 
     - <<: *default
+      arch: amd64
       env: TOX_ENV=coverage
 
     - <<: *default
@@ -113,6 +123,7 @@ jobs:
       env: TOX_ENV=coverage
 
     - <<: *default
+      arch: amd64
       stage: lint
       env: TOX_ENV=flakes
 
