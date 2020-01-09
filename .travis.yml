@@ -32,21 +32,6 @@ jobs:
       env: TOX_ENV=py37
       install:
         - pip install tox
-        - if [ "$TOX_ENV" == "with_pandas" ]; then
-            sudo add-apt-repository ppa:deadsnakes/ppa -y;
-            sudo apt-get update;
-            sudo apt-get install python3.7-dev;
-            python setup.py install;
-          elif [ "$TOX_ENV" == "with_numpy" ]; then
-            sudo add-apt-repository ppa:deadsnakes/ppa -y;
-            sudo apt-get update;
-            sudo apt-get install python3.7-dev;
-            python setup.py install;
-          elif [ "$TOX_ENV" == "coverage" ]; then
-            export COVERALLS_SERVICE_NAME=travis-ci;
-            export COVERALLS_REPO_TOKEN=abc12345;
-          fi
-        
       script:
         - tox -e $TOX_ENV
 
