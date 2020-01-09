@@ -119,7 +119,7 @@ jobs:
         - sudo apt-get update;
         - sudo apt-get install python3.7-dev;
         - python -m pip --version;
-        - #python -m pip install pandas;
+        - python -m pip install pandas;
         - python -m pip install cython;
         - python setup.py install;
       script:
