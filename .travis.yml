@@ -3,9 +3,7 @@ language: python
 # quick hack to determine what tag is (improvements welcomed)
 #     release: ^v(\d+|\.)+[^a-z]\d+$
 # dev release: ^v(\d+|\.)+[a-z]\d+$
-arch:
-  - arm64
-  - amd64
+
 
 stages:
   - lint
@@ -36,7 +34,22 @@ jobs:
       script:
         - tox -e $TOX_ENV
 
+    - &default
+      arch:arm64
+      stage: test
+      python: 3.7
+      env: TOX_ENV=py37
+      install:
+        - pip install tox
+      script:
+        - tox -e $TOX_ENV
+
     - <<: *default
+      python: 3.8
+      env: TOX_ENV=py38
+
+    - <<: *default
+      arch:arm64
       python: 3.8
       env: TOX_ENV=py38
 
@@ -45,10 +58,25 @@ jobs:
       env: TOX_ENV=py36
 
     - <<: *default
+      arch:arm64
+      python: 3.6
+      env: TOX_ENV=py36
+
+    - <<: *default
       python: 3.5
       env: TOX_ENV=py35
 
     - <<: *default
+      arch:arm64
+      python: 3.5
+      env: TOX_ENV=py35
+
+    - <<: *default
+      python: 2.7
+      env: TOX_ENV=py27
+
+    - <<: *default
+      arch:arm64
       python: 2.7
       env: TOX_ENV=py27
 
@@ -60,18 +88,38 @@ jobs:
       env: TOX_ENV=with_ipython
 
     - <<: *default
+      arch:arm64
+      env: TOX_ENV=with_ipython
+
+    - <<: *default
+      env: TOX_ENV=with_numpy
+
+    - <<: *default
+      arch:arm64
       env: TOX_ENV=with_numpy
 
     - <<: *default
       env: TOX_ENV=with_pandas
 
     - <<: *default
+      arch:arm64
+      env: TOX_ENV=with_pandas
+
+    - <<: *default
+      env: TOX_ENV=coverage
+
+    - <<: *default
+      arch:arm64
       env: TOX_ENV=coverage
 
     - <<: *default
       stage: lint
       env: TOX_ENV=flakes
 
+    - <<: *default
+      arch:arm64
+      stage: lint
+      env: TOX_ENV=flakes
     # TODO: the below packaging sections will be simplified with
     # doit/pyct (and note that using after_success means no alert to
     # failure uploading)
