@@ -4,7 +4,6 @@ language: python
 #     release: ^v(\d+|\.)+[^a-z]\d+$
 # dev release: ^v(\d+|\.)+[a-z]\d+$
 
-
 stages:
   - lint
   - test
