@@ -32,15 +32,6 @@ jobs:
       env: TOX_ENV=py37
       install:
         - pip install tox
-        - if [ "$TOX_ENV" == "with_pandas" ]; then
-            sudo add-apt-repository ppa:deadsnakes/ppa -y;
-            sudo apt-get update;
-            sudo apt-get install python3.7-dev;
-            python -m pip --version;
-            #python -m pip install pandas;
-            python -m pip install cython;
-            python setup.py install;
-          fi
       script:
         - tox -e $TOX_ENV
 
