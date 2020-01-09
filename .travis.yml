@@ -133,10 +133,6 @@ jobs:
       stage: lint
       env: TOX_ENV=flakes
 
-    - <<: *default
-      arch: arm64
-      stage: lint
-      env: TOX_ENV=flakes
     # TODO: the below packaging sections will be simplified with
     # doit/pyct (and note that using after_success means no alert to
     # failure uploading)
