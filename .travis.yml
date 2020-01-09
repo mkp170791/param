@@ -113,6 +113,16 @@ jobs:
     - <<: *default
       arch: arm64
       env: TOX_ENV=with_pandas
+      install:
+        - if [ "$TOX_ENV" == "with_pandas" ]; then
+            sudo add-apt-repository ppa:deadsnakes/ppa -y;
+            sudo apt-get update;
+            sudo apt-get install python3.7-dev;
+            python -m pip --version;
+            #python -m pip install pandas;
+            python -m pip install cython;
+            python setup.py install;
+          fi
 
     - <<: *default
       arch: amd64
