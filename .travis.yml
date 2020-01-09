@@ -5,6 +5,7 @@ language: python
 # dev release: ^v(\d+|\.)+[a-z]\d+$
 arch:
   - arm64
+  - amd64
 
 stages:
   - lint
@@ -79,10 +80,16 @@ jobs:
       env: LABELS="--label dev"
       stage: conda_dev_package
       install:
-        - wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
-        - chmod +x archiconda.sh
-        - bash archiconda.sh -b -p $HOME/miniconda
-        - export PATH="$HOME/miniconda/bin:$PATH"
+        - if [ `uname -m` == 'aarch64' ]; then
+              wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh;
+              chmod +x archiconda.sh;
+              bash archiconda.sh -b -p $HOME/archiconda;
+              export PATH="$HOME/archiconda/bin:$PATH";
+          elif [ "$TOX_ENV" == "with_numpy" ]; then
+              wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+              bash miniconda.sh -b -p $HOME/miniconda;
+              export PATH="$HOME/miniconda/bin:$PATH";
+          fi
         - conda config --set always_yes yes --set changeps1 no
         - conda update conda
         - conda install anaconda-client conda-build
