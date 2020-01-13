@@ -35,7 +35,6 @@ jobs:
         - tox -e $TOX_ENV
 
     - &default
-      arch: amd64
       stage: test
       python: 3.7
       env: TOX_ENV=py37
