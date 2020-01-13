@@ -26,6 +26,7 @@ jobs:
   include:
     - &default
       arch: arm64
+      arch: amd64
       stage: test
       python: 3.7
       env: TOX_ENV=py37
