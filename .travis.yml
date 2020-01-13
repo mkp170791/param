@@ -33,16 +33,6 @@ jobs:
       script:
         - tox -e $TOX_ENV
 
-    - &default
-      arch: arm64
-      stage: test
-      python: 3.7
-      env: TOX_ENV=py37
-      install:
-        - pip install tox
-      script:
-        - tox -e $TOX_ENV
-
     - <<: *default
       python: 3.8
       env: TOX_ENV=py38
@@ -78,6 +68,16 @@ jobs:
     - <<: *default
       stage: lint
       env: TOX_ENV=flakes
+
+    - &default
+      arch: arm64
+      stage: test
+      python: 3.7
+      env: TOX_ENV=py37
+      install:
+        - pip install tox
+      script:
+        - tox -e $TOX_ENV
 
     # TODO: the below packaging sections will be simplified with
     # doit/pyct (and note that using after_success means no alert to
